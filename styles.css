@@ -1,0 +1,1849 @@
+/* ============================================================
+    1. COLORES Y TEMAS GENERALES (se aplican a TODAS las páginas)
+   ============================================================ */
+
+/* Colores base del sitio (tema por defecto: inicio / café) */
+:root {
+  --color-fondo-top: #4b2e17;    /* color de fondo de las barras superiores */
+  --color-acento:     #c18f00;   /* color de acento (bordes / detalles) */
+  --color-fondo-pagina:#fffef7;  /* color de fondo del cuerpo de la página */
+
+  /* Paleta cafetería genérica */
+  --cafe:#4b2e17;
+  --dorado:#c18f00;
+  --crema:#fff7e9;
+  --tinta:#5a4633;
+
+  /* Paleta para página de postres */
+  --rosa: #f6b4b3;
+  --durazno: #f7c59f;
+  --crema-postre: #fff8f3;
+  --chocolate: #4b2e17;
+  --dorado-suave: #d8b26e;
+
+  /* Paleta para página de desayunos */
+  --miel:#f6be3e;
+  --yema:#ffb703;
+  --pan:#fff7e2;
+}
+
+/* Tema visual para bebidas calientes / inicio / pedidos */
+body.tema-caliente {
+  --color-fondo-top: #4b2e17;
+  --color-acento:     #d4a017;
+  --color-fondo-pagina:#fff7e9;
+}
+
+/* Tema visual para bebidas frías */
+body.tema-frio {
+  --color-fondo-top: #0284c7;
+  --color-acento:     #22d3ee;
+  --color-fondo-pagina:#e6f9ff;
+}
+
+/* Tema visual para postres */
+body.tema-postres {
+  --color-fondo-top: #f7c59f;
+  --color-acento:     #f6b4b3;
+  --color-fondo-pagina:#fff8f3;
+}
+
+/* Tema visual para desayunos */
+body.tema-desayuno {
+  --color-fondo-top: #ffb703;
+  --color-acento:     #ffd166;
+  --color-fondo-pagina:#fff7e2;
+}
+
+/* Tema visual para “Quiénes somos” */
+body.tema-quienes {
+  --color-fondo-top: #b57f00;
+  --color-acento:     #f5d067;
+  --color-fondo-pagina:#fffef5;
+}
+
+
+/* ============================================================
+   2. ESTILOS GLOBALES (compartidos en todo el sitio)
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body, main, section {
+  margin:0;
+  padding:0;
+}
+
+/* Texto general del sitio */
+body{
+  font-family:'Inter', sans-serif;
+  background:var(--color-fondo-pagina);
+}
+
+/* Precio resaltado en color dorado (reutilizable) */
+.precio-bebida{
+  display:inline-block;
+  margin-top:10px;
+  font-weight:800;
+  font-size:17px;
+  letter-spacing:.4px;
+  background: linear-gradient(90deg, #c18f00, #f5d067);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color: var(--dorado);
+  text-shadow:0 2px 3px rgba(0,0,0,.15);
+  transition: transform .2s ease;
+}
+
+/* ===== HERO GENERAL (mismo alto para todas las secciones) ===== */
+.cafe-hero,
+.frias-hero,
+.desayunos-hero,
+.postres-hero{
+  padding:48px 0 56px;      /* mismo alto arriba y abajo */
+}
+/* ===== SUBTÍTULO DEL HERO (frase debajo del h1) ===== */
+
+
+/* ============================================================
+   3. BARRA PROMOCIONAL + CABECERA / MENÚ (TODAS LAS PÁGINAS)
+   ============================================================ */
+
+/* Franja promocional superior (texto pequeño arriba) */
+.barra-promocional{
+  color:#fff;
+  text-align:center;
+  font:700 14px/1 'Inter', sans-serif;
+  padding:12px 0;
+  background:
+    radial-gradient(rgba(255,255,255,.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,.10), rgba(255,255,255,.10)),
+    linear-gradient(90deg,var(--color-fondo-top) 0%, var(--color-acento) 50%, var(--color-fondo-top) 100%);
+  background-size: 8px 8px, cover, cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,.18);
+  border-bottom: 2px solid rgba(0,0,0,.25);
+}
+
+/* Texto dentro de la barra promo */
+.texto-promocion{
+  letter-spacing:.35px;
+  opacity:.98;
+}
+
+/* Contenedor del menú principal */
+.menu-principal{
+  background:#fff;
+  border-bottom:2px solid #ececec;
+  padding:10px 0;
+  margin-bottom:10px;
+}
+
+/* Contenido interno del header (logo + navegación) */
+.menu-contenido{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-right:50px;
+  padding-left:40px;
+}
+
+/* Bloque del logo (imagen + texto) */
+.logo-del-sitio{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* Imagen del logo */
+.logo-imagen{
+  height:55px;
+  width:auto;
+  object-fit:contain;
+  display:block;
+  border-radius:8px;
+}
+
+/* Texto del logo “BaKano Café” */
+.logo-texto{
+  font:700 24px/1 'Inter', sans-serif;
+  color:var(--cafe);
+}
+
+/* Lista de enlaces del menú */
+.lista-navegacion{
+  list-style:none;
+  display:flex;
+  gap:20px;
+  margin:0;
+  padding:0;
+}
+
+/* Enlaces del menú (texto) */
+.item-navegacion a{
+  text-decoration:none;
+  font-weight:600;
+  color:#1f2937;
+  transition:.2s;
+  font-family:'Inter', sans-serif;
+}
+
+/* Estado hover de los enlaces del menú */
+.item-navegacion a:hover{
+  color:var(--color-acento);
+  padding-bottom:4px;
+  border-bottom:3px solid var(--color-acento);
+}
+
+/* Enlace activo (página actual) */
+.lista-navegacion a.activo{
+  color: var(--color-acento);
+  border-bottom:2px solid var(--color-acento);
+  padding-bottom:3px;
+}
+
+/* Botón de “Pedido a domicilio” dentro del menú */
+.btn-nav{
+  background: var(--color-acento);
+  color:#4b2e17 !important;
+  padding:8px 14px;
+  border-radius:10px;
+  font-weight:700;
+  text-decoration:none;
+  border:2px solid rgba(255,255,255,.2);
+  transition:.25s ease;
+}
+
+/* Hover del botón de menú */
+.btn-nav:hover{
+  filter:brightness(1.15);
+  transform:translateY(-2px);
+  border:2px solid rgba(0,0,0,.3);
+}
+
+
+/* ============================================================
+    4. [INDEX] PORTADA + TARJETAS DE CATEGORÍAS
+   ============================================================ */
+
+/* Banner principal con imagen de fondo (index) */
+.seccion-banner{
+  background-image:url("Proyecto/img/PORTADA.jpg");
+  background-size:cover;
+  background-position:center;
+  min-height:420px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:80px 20px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Capa oscura encima de la imagen del banner */
+.seccion-banner::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0, 0, 0, 0.049);
+  mix-blend-mode:multiply;
+}
+
+/* Contenido central del banner (título, texto, etc.) */
+.seccion-banner .overlay{
+  position:relative;
+  z-index:1;
+  text-align:center;
+  color:#fff;
+}
+
+/* Sección donde van las 4 tarjetas de categorías */
+.seccion-categorias{
+  padding:70px 0 80px;
+  text-align:center;
+}
+
+/* Título “Explora nuestro menú” u otro texto principal */
+.titulo-seccion{
+  font:700 32px/1 'Inter', sans-serif;
+  margin-bottom:40px;
+  background: linear-gradient(90deg, #c18f00, #ffdc76);
+  -webkit-background-clip:text;
+  color:transparent;
+  letter-spacing:.6px;
+}
+
+/* Grid de tarjetas de categorías (bebidas, postres, etc.) */
+.grid-categorias{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+/* Tarjeta individual de categoría (contenedor) */
+.categoria{
+  background:#fff;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 6px 16px rgba(0,0,0,.15);
+  display:flex;
+  flex-direction:column;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+
+/* Efecto al pasar el mouse sobre la tarjeta */
+.categoria:hover{
+  transform:translateY(-8px);
+  box-shadow:0 14px 28px rgba(0,0,0,.25);
+}
+
+/* Caja de imagen dentro de la tarjeta */
+.caja-imagen{
+  aspect-ratio:16/9;
+  width:100%;
+  overflow:hidden;
+  background:#eee;
+}
+
+/* Imagen de la categoría */
+.img-categoria{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition: transform .4s ease;
+}
+
+/* Zoom suave en la imagen al pasar el mouse */
+.categoria:hover .img-categoria{
+  transform:scale(1.08);
+}
+
+/* Contenido de texto de la tarjeta */
+.contenido-categoria{
+  padding:16px 14px 18px;
+  text-align:center;
+}
+
+/* Título de la tarjeta (ej. “Bebidas Calientes”) */
+.contenido-categoria h3{
+  font-size:20px;
+  color:var(--cafe);
+  margin:0 0 6px;
+}
+
+/* Párrafo corto descriptivo de la categoría */
+.contenido-categoria p{
+  font-size:14px;
+  color:#555;
+  margin:0;
+  min-height:40px;
+}
+
+/* Enlace que envuelve toda la tarjeta */
+.link-categoria{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+}
+
+
+/* ============================================================
+   5. [CAFÉ] BEBIDAS CALIENTES (Cafe.html)
+   ============================================================ */
+
+/* Banda superior con título “Bebidas Calientes” */
+.cafe-hero{
+  background:
+    radial-gradient(rgba(255,255,255,.12) 1px, transparent 1px) 0 0/10px 10px,
+    linear-gradient(90deg, var(--color-fondo-top), var(--color-acento) 50%, var(--color-fondo-top));
+  color:#fff;
+  box-shadow:0 6px 18px rgba(0,0,0,.18);
+  border-bottom:2px solid rgba(0,0,0,.2);
+}
+
+/* Subtítulo descriptivo debajo del h1 */
+.cafe-sub{
+  margin:8px auto 0;
+  max-width:680px;
+  text-align:center;
+  opacity:.95;
+}
+.intro-seccion.barra{
+    display:inline-block;        /* permite que el ancho se ajuste al texto */
+    font-size:18px;
+    font-weight:500;
+    text-align:center;
+    color:#4b2e17;
+    margin:0 auto 50px;
+    position:relative;
+    padding:0 6px 12px;          /* espacio abajo para la barra */
+    line-height:1.6;
+}
+
+.intro-seccion.barra::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;                  /* barra del ancho del texto */
+    height:4px;
+    border-radius:4px;
+    background:linear-gradient(90deg, var(--color-acento), var(--color-fondo-top));
+}
+
+
+
+/* Contenedor general de la lista de bebidas calientes */
+.seccion-producto.cafe-only{
+  background:var(--crema);
+  padding:50px 0 70px;
+}
+
+/* Limpieza de pseudo-elementos no deseados en la lista */
+.lista-bebidas::before,
+.seccion-producto.cafe-only::before{
+  content:none !important;
+}
+
+/* Lista que agrupa todas las bebidas calientes */
+.lista-bebidas{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:30px;
+  counter-reset:bebida;
+}
+
+/* Tarjeta individual de bebida caliente (contenedor) */
+.bebida-item{
+  counter-increment:bebida;
+  display:grid;
+  grid-template-columns:220px 1fr;   /* imagen izquierda, texto derecha */
+  align-items:center;
+  gap:20px;
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  border:2px solid var(--color-acento);
+  box-shadow:0 8px 22px rgba(0,0,0,.15);
+  position:relative;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+/* Números circulares 1,2,3… en la esquina de cada bebida */
+.bebida-item::before{
+  content: counter(bebida);
+  position:absolute;
+  top:-12px;
+  left:-12px;
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:18px;
+  color:#fff;
+  background:linear-gradient(180deg, var(--color-acento), var(--color-fondo-top));
+  border-radius:50%;
+  box-shadow:0 4px 10px rgba(0,0,0,.30);
+}
+
+/* Imagen de la bebida caliente */
+.bebida-item > img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+  transition: transform .25s ease;
+}
+
+/* Efecto hover para la tarjeta y su imagen */
+.bebida-item:hover{
+  transform: translateY(-6px);
+  box-shadow:0 14px 30px rgba(0,0,0,.25);
+  border-color: var(--color-fondo-top);
+}
+.bebida-item:hover > img{
+  transform: scale(1.04);
+}
+
+/* Columna de texto de la bebida */
+.bebida-texto{
+  padding-right:10px;
+}
+
+/* Título de cada bebida (h3) */
+.bebida-texto h3{
+  margin:0 0 8px;
+  color:#4b2e17;
+  font-weight:900;
+  font-size:22px;
+}
+
+/* Descripción / párrafo de la bebida */
+.bebida-texto p{
+  margin:0 0 10px;
+  color:#4b2e17;
+  font-size:15px;
+  line-height:1.6;
+  text-align:justify;
+}
+
+/* Ajuste del tamaño del precio en esta sección */
+.precio-bebida{
+  display:inline-block;
+  margin-top:4px;
+  font-weight:800;
+  font-size:17px;
+}
+
+
+/* ============================================================
+   6. [FRÍAS] BEBIDAS FRÍAS (Bebidas-frias.html)
+   ============================================================ */
+
+/* Banda superior con título “Bebidas Frías” */
+.frias-hero{
+  background:
+    radial-gradient(rgba(255,255,255,.12) 1px, transparent 1px) 0 0/10px 10px,
+    linear-gradient(90deg, var(--color-fondo-top), var(--color-acento) 50%, var(--color-fondo-top));
+  color:#fff;
+  box-shadow:0 6px 18px rgba(0,0,0,.18);
+  border-bottom:2px solid rgba(0,0,0,.2);
+}
+
+/* Contenedor general de la lista de bebidas frías */
+.seccion-producto.frias-only{
+  background:#f0fbff;
+  padding:50px 0 90px;
+  position:relative;
+}
+
+/* Fondo de cuadritos suaves detrás de las tarjetas frías */
+.seccion-producto.frias-only::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.03) 1px, transparent 1px) 0 0/24px 24px,
+    linear-gradient(0deg,  rgba(0,0,0,.02) 1px, transparent 1px) 0 0/24px 24px;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* Estilo adicional para tarjetas frías (mismo HTML de bebidas) */
+.frias-card{
+  background: linear-gradient(#fff,#fff) padding-box,
+              linear-gradient(90deg, var(--color-acento), var(--color-fondo-top)) border-box;
+  border:2px solid transparent;
+}
+
+/* Número de tarjeta con degradado más frío */
+.frias-card::before{
+  background:linear-gradient(180deg, var(--color-acento), #3bc7ff);
+}
+
+
+/* ============================================================
+    7. [POSTRES] LISTA DE POSTRES (Postres.html)
+   ============================================================ */
+
+/* Banda superior con título “Postres” */
+.postres-hero{
+  background:
+    radial-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
+    linear-gradient(135deg, var(--color-fondo-top), var(--color-acento));
+  background-size:8px 8px, cover;
+  color:#fff;
+  text-align:center;
+  box-shadow:0 6px 25px rgba(0,0,0,.25);
+  border-bottom:2px solid rgba(0,0,0,.15);
+}
+
+/* Título principal de la página de postres */
+.postres-title{
+  font:900 clamp(32px,5vw,56px)/1 'Inter', sans-serif;
+  text-shadow:0 3px 10px rgba(0,0,0,.4);
+  letter-spacing:1px;
+}
+
+/* Subtítulo de la página de postres */
+.postres-sub{
+  font-size:18px;
+  opacity:.95;
+  margin-top:10px;
+  text-shadow:0 2px 6px rgba(0,0,0,.25);
+}
+
+/* Contenedor general de la sección de postres */
+.seccion-postres{
+  background:var(--crema-postre);
+  padding:70px 0;
+  position:relative;
+}
+
+/* Fondo con cuadritos + manchas de color suave */
+.seccion-postres::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.03) 1px, transparent 1px) 0 0/24px 24px,
+    linear-gradient(0deg,  rgba(0,0,0,.02) 1px, transparent 1px) 0 0/24px 24px,
+    radial-gradient(circle at 20% 30%, rgba(255,222,200,.3), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,200,220,.3), transparent 40%);
+  z-index:0;
+  pointer-events:none;
+}
+
+/* Párrafo introductorio de la lista de postres */
+.postres-intro{
+  text-align:center;
+  color:var(--chocolate);
+  font-size:18px;
+  margin-bottom:40px;
+  position:relative;
+  z-index:1;
+}
+
+/* Grid de tarjetas de postres */
+.lista-postres{
+  counter-reset:postre;
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+  gap:30px;
+  position:relative;
+  z-index:1;
+}
+
+/* Tarjeta individual de postre (contenedor) */
+.postre-item{
+  counter-increment:postre;
+  background:#fff;
+  border-radius:20px;
+  overflow:hidden;
+  border:2px solid rgba(249,207,170,.4);
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+  transition:.3s;
+  position:relative;
+}
+
+/* Hover de la tarjeta de postre */
+.postre-item:hover{
+  transform:translateY(-8px);
+  box-shadow:0 14px 30px rgba(0,0,0,.25);
+}
+
+/* Número circular 1,2,3… en postres */
+.postre-item::before{
+  content:counter(postre);
+  position:absolute;
+  top:10px;
+  left:10px;
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-weight:900;
+  border-radius:50%;
+  background:linear-gradient(180deg, var(--dorado-suave), #f9d98b);
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
+  z-index:2;
+}
+
+/* Imagen del postre */
+.postre-item img{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  transition:transform .4s;
+}
+
+/* Zoom de la imagen al hacer hover */
+.postre-item:hover img{
+  transform:scale(1.08);
+}
+
+/* Bloque de texto dentro de la tarjeta */
+.postre-texto{
+  background:#fff;
+  padding:18px 20px 25px;
+  text-align:center;
+}
+
+/* Título del postre */
+.postre-texto h3{
+  color:var(--chocolate);
+  font:800 22px/1 'Inter', sans-serif;
+  margin-bottom:10px;
+}
+
+/* Párrafo descriptivo del postre */
+.postre-texto p{
+  color:#5a3d28;
+  font-size:15px;
+  line-height:1.6;
+  min-height:70px;
+  margin-bottom:10px;
+}
+
+
+/* ============================================================
+   8. [DESAYUNOS] LISTA DE DESAYUNOS (Desayunos.html)
+   ============================================================ */
+
+/* Banda superior con título “Desayunos” */
+.desayunos-hero{
+  background:
+    radial-gradient(rgba(255,255,255,.12) 1px, transparent 1px) 0 0/10px 10px,
+    linear-gradient(90deg, var(--color-fondo-top), var(--color-acento) 50%, var(--color-fondo-top));
+  color:#fff;
+  box-shadow:0 8px 22px rgba(0,0,0,.18);
+  border-bottom:2px solid rgba(0,0,0,.2);
+}
+
+/* Título principal de la página de desayunos */
+.desayunos-title{
+  margin:0;
+  text-align:center;
+  font:900 clamp(30px,4.8vw,50px)/1 'Inter', sans-serif;
+  letter-spacing:.6px;
+  text-shadow:0 3px 10px rgba(0,0,0,.35);
+}
+
+/* Subtítulo de la página de desayunos */
+.desayunos-sub{
+  text-align:center;
+  margin:8px auto 0;
+  opacity:.95;
+  max-width:720px;
+}
+
+/* Contenedor general de la sección de desayunos */
+.seccion-producto.desayunos-only{
+  position:relative;
+  background:var(--pan);
+  padding:56px 0 72px;
+}
+
+/* Fondo cuadriculado suave para desayunos */
+.seccion-producto.desayunos-only::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.03) 1px, transparent 1px) 0 0/24px 24px,
+    linear-gradient(0deg, rgba(0,0,0,.02) 1px, transparent 1px) 0 0/24px 24px;
+  pointer-events:none;
+}
+
+/* Lista de tarjetas de desayunos */
+.lista-desayunos{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:22px;
+}
+
+/* Tarjeta individual de desayuno (contenedor) */
+.desayuno-item{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:18px;
+  align-items:center;
+  background: linear-gradient(#fff,#fff) padding-box,
+              linear-gradient(90deg, #ffd166, var(--yema)) border-box;
+  border:2px solid transparent;
+  border-radius:20px;
+  padding:14px;
+  box-shadow:0 10px 24px rgba(0,0,0,.15);
+  transition:.22s;
+}
+
+/* Hover para tarjeta de desayuno */
+.desayuno-item:hover{
+  transform:translateY(-6px);
+  box-shadow:0 16px 34px rgba(0,0,0,.22);
+}
+
+/* Imagen del desayuno */
+.desayuno-item > img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+  border-radius:14px;
+  box-shadow:0 8px 18px rgba(0,0,0,.22);
+  transition:transform .28s ease;
+}
+
+/* Zoom de imagen al pasar el mouse */
+.desayuno-item:hover > img{
+  transform:scale(1.03);
+}
+
+/* Columna de texto del desayuno */
+.desayuno-texto{
+  padding-right:14px;
+}
+
+/* Título del platillo de desayuno */
+.desayuno-texto h3{
+  margin:0 0 6px;
+  color:var(--cafe);
+  font-weight:900;
+  font-size:24px;
+}
+
+/* Párrafo descriptivo del desayuno */
+.desayuno-texto p{
+  margin:0;
+  color:#5b3a21;
+  line-height:1.6;
+  font-size:16px;
+  text-align:justify;
+}
+.nota{
+  display: inline-block;
+  margin-left: 8px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #5b3a21;
+  background: linear-gradient(90deg, #ffd166, #f6c24a);
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.12);
+  letter-spacing: .3px;
+  vertical-align: middle;
+}
+/* ============================================================
+   9. [QUIÉNES SOMOS] PÁGINA INFORMATIVA (Quienes-somos.html)
+   ============================================================ */
+
+/* Contenedor general reutilizable para varias secciones */
+.contenedor-pagina{
+  width:90%;
+  max-width:1100px;
+  margin:0 auto;
+}
+
+/* Sección hero de “Quiénes somos” */
+.about-hero{
+  background:
+    radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px) 0 0/10px 10px,
+    linear-gradient(90deg, var(--color-fondo-top), var(--color-acento) 50%, var(--color-fondo-top));
+  padding:60px 0 80px;
+  text-align:center;
+  color:#fff;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+}
+
+/* Título principal “Quiénes somos” */
+.about-title{
+  font-size: clamp(30px, 4.4vw, 50px);
+  font-weight:900;
+  margin:0 0 12px;
+  letter-spacing:.6px;
+}
+
+/* Subtítulo descriptivo */
+.about-sub{
+  margin:0 auto;
+  max-width:620px;
+  font-size:16px;
+  opacity:.96;
+}
+
+/* Bloque “Nuestra historia” (texto + foto) */
+.about-bloque{
+  padding:70px 0;
+  background:#fffef7;
+}
+
+/* Grid de dos columnas: texto / imagen */
+.about-grid-2{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  gap:40px;
+  align-items:center;
+}
+
+/* Tarjeta de texto de historia */
+.about-texto{
+  background:#ffffff;
+  padding:26px 28px;
+  border-radius:22px;
+  box-shadow:0 16px 40px rgba(0,0,0,.18);
+}
+
+/* Título “Nuestra historia” u otros h2 */
+.about-texto h2{
+  margin:0 0 12px;
+  color:#4b2e17;
+  font-weight:800;
+  font-size:26px;
+}
+
+/* Párrafos del bloque de historia */
+.about-texto p{
+  margin:0 0 12px;
+  line-height:1.7;
+  font-size:15px;
+  color:#4b2e17;
+}
+
+/* Imagen del bloque “Nuestra historia” */
+.about-media img{
+  width:100%;
+  border-radius:24px;
+  box-shadow:0 18px 40px rgba(0,0,0,.25);
+  object-fit:cover;
+}
+
+/* Fondo crema para las tarjetas de Misión y Visión */
+.crema{
+  background:#fff7e9;
+}
+
+/* Tarjetas para Misión / Visión */
+.about-card{
+  padding:26px 30px;
+  background:#fff;
+  border-radius:22px;
+  box-shadow:0 14px 34px rgba(0,0,0,.16);
+}
+
+/* Título de tarjeta (Misión, Visión, etc.) */
+.about-card h3{
+  margin:0 0 10px;
+  font-size:20px;
+  color:#4b2e17;
+  font-weight:800;
+}
+
+/* Párrafos de las tarjetas de misión y visión */
+.about-card p{
+  margin:0;
+  font-size:15px;
+  color:#5a4633;
+  line-height:1.6;
+}
+
+/* Título centrado “Nuestros valores” */
+.centrado{
+  text-align:center;
+  color:#4b2e17;
+  font-size:26px;
+  font-weight:900;
+  margin-bottom:24px;
+}
+
+/* Lista de valores (presentados como chips) */
+.valores-lista{
+  list-style:none;
+  margin:0 auto;
+  padding:0;
+  max-width:520px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+
+/* Chip individual de valor (ej. “Calidez”) */
+.valor-item{
+  font-size:14px;
+  color:#4b2e17;
+  background:#ffffff;
+  border-radius:999px;
+  padding:8px 16px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  box-shadow:0 6px 16px rgba(0,0,0,.12);
+  border:1px solid rgba(0,0,0,.03);
+}
+
+/* Sección “Nuestro local” (texto + 2 fotos) */
+.local-section{
+  position:relative;
+  padding:70px 0 80px;
+  background:#fffdf6;
+}
+
+/* Fondo con puntitos suaves para esta sección */
+.local-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.02) 1px, transparent 1px) 0 0/22px 22px,
+    linear-gradient(0deg, rgba(0,0,0,.015) 1px, transparent 1px) 0 0/22px 22px;
+  opacity:.55;
+  pointer-events:none;
+}
+
+/* Aseguramos que el contenido quede encima del fondo */
+.local-section .contenedor-pagina{
+  position:relative;
+  z-index:1;
+}
+
+/* Cabecera de “Nuestro local” (título + párrafo) */
+.local-header{
+  text-align:center;
+  margin-bottom:32px;
+}
+
+/* Título “Nuestro local” */
+.local-header h2{
+  margin:0 0 8px;
+  font-size:30px;
+  font-weight:900;
+  color:#4b2e17;
+}
+
+/* Párrafo de introducción del local */
+.local-header p{
+  margin:0;
+  max-width:640px;
+  margin-inline:auto;
+  font-size:15px;
+  color:#5a4633;
+  line-height:1.6;
+}
+
+/* Grid de dos columnas: texto del local / fotos */
+.local-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+  gap:40px;
+  align-items:center;
+}
+
+/* Párrafos describiendo el local */
+.local-text p{
+  margin:0 0 14px;
+  font-size:15px;
+  line-height:1.7;
+  color:#5a4633;
+  text-align:justify;
+}
+
+/* Contenedor de las dos fotos */
+.local-photos{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:22px;
+}
+
+/* Estilo base de cada foto del local */
+.local-photo{
+  border-radius:26px;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.28);
+  background:#000;
+}
+
+/* Imagen dentro de cada foto */
+.local-photo img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* Foto grande del local */
+.local-photo.grande{
+  width:420px;
+  max-width:100%;
+  height:280px;
+}
+
+/* Foto pequeña del local */
+.local-photo.chica{
+  width:270px;
+  max-width:78%;
+  height:185px;
+  margin-right:40px;
+  margin-top:-34px;
+}
+
+/* Sección “Nuestra esencia Bakano” */
+.quienes-esencia{
+  padding:70px 0 80px;
+  background:#fffef8;
+}
+
+/* Título de la sección esencia */
+.esencia-titulo{
+  text-align:center;
+  color:#4b2e17;
+  font-size:26px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+/* Párrafo introductorio de esencia */
+.esencia-intro{
+  text-align:center;
+  max-width:640px;
+  margin:0 auto 34px;
+  color:#5a4633;
+}
+
+/* Grid con 3 tarjetas de esencia */
+.esencia-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+/* Tarjeta individual de esencia (ej. “Ambiente tranquilo”) */
+.esencia-card{
+  background:#fff;
+  padding:22px 20px 24px;
+  border-radius:22px;
+  text-align:center;
+  box-shadow:0 12px 28px rgba(0,0,0,.16);
+}
+
+/* Título de cada tarjeta de esencia */
+.esencia-card h3{
+  margin:0 0 10px;
+  color:#4b2e17;
+  font-weight:800;
+}
+
+/* Párrafo de cada tarjeta de esencia */
+.esencia-card p{
+  margin:0;
+  line-height:1.6;
+  font-size:15px;
+  color:#5a4633;
+}
+
+/* Bloque final tipo “llamado a la acción” en quienes-somos */
+.about-cta{
+  background:
+    radial-gradient(rgba(255,255,255,.10) 1px, transparent 1px) 0 0/10px 10px,
+    linear-gradient(90deg, #c18f00, #f4d266 50%, #c18f00);
+  padding:48px 0 52px;
+  text-align:center;
+  color:#3a2313;
+  box-shadow:0 -10px 20px rgba(0,0,0,.15) inset;
+}
+
+/* Título de la CTA final */
+.about-cta h2{
+  margin:0 0 10px;
+  font-size:26px;
+  font-weight:900;
+}
+
+/* Párrafo corto en la CTA final */
+.about-cta p{
+  max-width:560px;
+  margin:0 auto 18px;
+  font-size:15px;
+}
+
+/* Botón de teléfono dentro de la CTA */
+.about-cta .btn-telefono{
+  display:inline-block;
+  padding:12px 20px;
+  background:linear-gradient(90deg, #ffd166, #f5d067);
+  color:#3a2313;
+  font-weight:900;
+  border-radius:12px;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(0,0,0,.20);
+  transition: transform .2s ease;
+}
+
+/* Hover del botón de la CTA */
+.about-cta .btn-telefono:hover{
+  transform:scale(1.05);
+}
+
+/* Ajustes responsive específicos de “Quiénes somos” */
+@media (max-width: 900px){
+  .about-grid-2,
+  .local-layout{
+    grid-template-columns:1fr;
+  }
+  .local-photos{
+    align-items:center;
+  }
+  .local-photo.grande{
+    width:100%;
+    height:auto;
+  }
+  .local-photo.chica{
+    margin-right:0;
+    margin-top:14px;
+    max-width:70%;
+    height:auto;
+  }
+}
+@media(max-width:700px){
+  .esencia-grid{
+    grid-template-columns:1fr;
+  }
+  .valores-lista{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* ============================================================
+   10. [PEDIDOS] PÁGINA DE PEDIDOS A DOMICILIO
+   ============================================================ */
+
+/* Banda superior “Pedidos a domicilio” */
+.hero-pedidos{
+  background:
+    radial-gradient(rgba(255,255,255,.1) 1px, transparent 1px) 0 0/10px 10px,
+    linear-gradient(90deg, var(--color-fondo-top), var(--color-acento) 50%, var(--color-fondo-top));
+  color:#fff;
+  text-align:center;
+  padding:60px 20px;
+}
+
+/* Título principal “Pedidos a domicilio” */
+.hero-pedidos h1{
+  font-size:42px;
+  margin:0 0 10px;
+  font-weight:900;
+}
+
+/* Subtítulo debajo del h1 */
+.hero-pedidos p{
+  opacity:.95;
+  margin-bottom:20px;
+  font-size:17px;
+}
+
+/* Botón grande “Haz tu pedido” (hero / CTA) */
+.btn-pedido{
+  display:inline-block;
+  padding:12px 20px;
+  background:linear-gradient(90deg, #ffd166, #f6c24a);
+  border-radius:12px;
+  font-weight:800;
+  text-decoration:none;
+  color:#4b2e17;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
+
+/* Versión más grande del botón (abajo) */
+.btn-pedido.grande{
+  font-size:20px;
+  padding:14px 28px;
+}
+
+/* Sección que muestra las distintas formas de pedir */
+.pedidos-metodos{
+  padding:60px 0;
+}
+
+/* Grid de tarjetas de métodos (teléfono, rápido, horarios) */
+.metodos-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+}
+
+/* Tarjeta individual de método */
+.metodo-card{
+  background:#fff;
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+  text-align:center;
+}
+
+/* Título de cada método (ej. “Llama por teléfono”) */
+.metodo-card h3{
+  margin:0 0 10px;
+  font-size:20px;
+  font-weight:800;
+  color:#4b2e17;
+}
+
+/* Párrafo explicando el método */
+.metodo-card p{
+  color:#5a4633;
+  font-size:15px;
+  line-height:1.5;
+}
+
+/* Botón pequeño dentro de las tarjetas de métodos */
+.btn-mini{
+  display:inline-block;
+  margin-top:10px;
+  padding:8px 16px;
+  background:#ffd166;
+  color:#4b2e17;
+  border-radius:8px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+/* Sección de “Menú rápido” con columnas */
+.menu-rapido{
+  padding:60px 0;
+  background:#fffdf5;
+}
+
+/* Grid de tarjetas para menú rápido (4 columnas) */
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+/* Tarjeta de categoría en el menú rápido */
+.menu-card{
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 8px 24px rgba(0,0,0,.15);
+  padding:18px 18px 16px;
+  text-decoration:none;
+  color:#4b2e17;
+  font-weight:800;
+  transition: transform .2s;
+}
+
+/* Hover en tarjeta de menú rápido */
+.menu-card:hover{
+  transform:translateY(-5px);
+}
+
+/* Contenido interior: títulos y listas */
+.lista-productos{
+  text-align:left;
+  padding:20px;
+}
+
+/* Título de cada columna (ej. “Bebidas calientes”) */
+.lista-productos h3{
+  font-size:20px;
+  font-weight:900;
+  color:#4b2e17;
+  margin-bottom:12px;
+}
+
+/* Lista de productos dentro de la columna */
+.lista-productos ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+/* Elemento individual de la lista de productos */
+.lista-productos ul li{
+  background:#fffaf1;
+  margin-bottom:6px;
+  padding:8px 12px;
+  border-radius:8px;
+  font-size:14px;
+  color:#4b2e17;
+  border-left:4px solid #ffc55c;
+  box-shadow:0 2px 6px rgba(0,0,0,.08);
+  transition:.2s;
+}
+
+/* Hover en cada producto del menú rápido */
+.lista-productos ul li:hover{
+  transform:translateX(4px);
+  background:#ffeed1;
+}
+
+/* Sección FAQ de preguntas frecuentes */
+.faq{
+  padding:60px 0;
+}
+
+/* Grid de tarjetas FAQ */
+.faq-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+/* Tarjeta individual de cada pregunta/respuesta */
+.faq-item{
+  background:#fff;
+  padding:18px;
+  border-radius:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+/* Título de pregunta */
+.faq-item h3{
+  margin:0 0 8px;
+  color:#4b2e17;
+  font-weight:800;
+}
+
+/* Párrafo de respuesta */
+.faq-item p{
+  margin:0;
+  color:#5a4633;
+  line-height:1.5;
+}
+
+/* Sección final de CTA al final de pedidos */
+.cta-final{
+  background:#4b2e17;
+  color:#fff;
+  text-align:center;
+  padding:50px 20px;
+}
+
+/* Título del bloque CTA final */
+.cta-final h2{
+  margin:0 0 18px;
+  font-size:28px;
+  font-weight:900;
+}
+
+
+/* ============================================================
+   11. [PEDIDOS] BLOQUE “RESUMEN / WHATSAPP”
+   ============================================================ */
+
+/* Sección donde se explica cómo escribir el pedido */
+.resumen-pedido{
+  background:#fffdf5;
+  padding:60px 0 70px;
+}
+
+/* Título de sección reutiliza .titulo-seccion (centrado) */
+.resumen-pedido .titulo-seccion{
+  text-align:center;
+  margin-bottom:32px;
+}
+
+/* Layout de dos columnas: pasos / texto + formulario */
+.resumen-layout{
+  display:grid;
+  grid-template-columns:1.1fr 1.1fr;
+  gap:30px;
+  align-items:flex-start;
+}
+
+/* Título “¿Cómo funciona?” en la columna de pasos */
+.resumen-pasos h3{
+  margin:0 0 12px;
+  font-size:20px;
+  font-weight:800;
+  color:#4b2e17;
+}
+
+/* Lista numerada de pasos para hacer el pedido */
+.resumen-pasos ol{
+  margin:0 0 14px;
+  padding-left:18px;
+  color:#5a4633;
+  font-size:14px;
+  line-height:1.7;
+}
+
+/* Nota importante debajo de los pasos */
+.resumen-nota{
+  font-size:13px;
+  color:#b45309;
+  background:#fff3cd;
+  border-radius:10px;
+  padding:10px 12px;
+}
+
+/* Tarjeta derecha que contiene el textarea y el botón */
+.resumen-form{
+  background:#fff;
+  border-radius:18px;
+  padding:20px 20px 22px;
+  box-shadow:0 10px 26px rgba(0,0,0,.15);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* Título dentro de la tarjeta de resumen */
+.resumen-form .pedido-titulo{
+  text-align:left;
+  font-size:20px;
+  font-weight:800;
+  color:#4b2e17;
+  margin:0 0 4px;
+}
+
+/* Texto explicativo debajo del título */
+.pedido-texto{
+  font-size:14px;
+  color:#5a4633;
+  margin:0 0 4px;
+}
+
+/* Etiquetas (label) del formulario */
+.resumen-form label{
+  font-size:14px;
+  font-weight:700;
+  color:#4b2e17;
+  margin:6px 0;
+}
+
+/* Textarea donde el cliente escribe su pedido */
+.pedido{
+  width:100%;
+  max-width:100%;
+  min-height:260px;
+  padding:14px 14px;
+  font-size:14px;
+  line-height:1.7;
+  border-radius:14px;
+  border:1px solid #f3d9a4;
+  background:#fffef8;
+  outline:none;
+  resize:vertical;
+  box-shadow:0 4px 12px rgba(0,0,0,.10);
+  color:#5b3a21;
+  font-family:'Inter', sans-serif;
+}
+
+/* Texto de ayuda dentro del textarea */
+.pedido::placeholder{
+  color:#6a4e2f;
+  opacity:.75;
+  font-weight:500;
+  line-height:1.6;
+}
+
+/* Botón verde para abrir WhatsApp con el pedido */
+.btn-wapp{
+  display:block;
+  width:100%;
+  margin:8px 0 0;
+  padding:12px 0;
+  border-radius:999px;
+  background:linear-gradient(90deg, #22c55e, #16a34a);
+  color:#fff;
+  font-weight:800;
+  font-size:15px;
+  text-decoration:none;
+  text-align:center;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 8px 22px rgba(0,0,0,.25);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+/* Hover del botón de WhatsApp */
+.btn-wapp:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(0,0,0,.30);
+  filter:brightness(1.05);
+}
+
+/* Nota pequeña debajo del botón */
+.pedido-nota{
+  text-align:left;
+  margin-top:8px;
+  font-size:12px;
+  color:#8a6840;
+}
+
+/* Responsive: columnas se apilan en pantallas pequeñas */
+@media (max-width: 900px){
+  .resumen-layout{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* ============================================================
+   12. [PEDIDOS] BLOQUE FINAL DE MENSAJE EJEMPLO
+   ============================================================ */
+
+/* Sección donde se muestra un ejemplo de mensaje completo */
+.bloque-pedido-wapp{
+  padding: 60px 0 70px;
+  background: #fffdf5;
+}
+
+/* Título del bloque ejemplo */
+.pedido-titulo{
+  text-align:center;
+  font-size: 26px;
+  font-weight: 900;
+  color:#4b2e17;
+  margin-bottom: 10px;
+}
+
+/* Párrafo previo al ejemplo */
+.pedido-texto{
+  text-align:center;
+  max-width: 620px;
+  margin: 0 auto 24px;
+  font-size: 15px;
+  color:#5a4633;
+}
+
+/* Cuadro donde se ve el texto del mensaje de ejemplo */
+.pedido-preview{
+  width: 100%;
+  max-width: 520px;
+  height: 230px;
+  margin: 0 auto 18px;
+  background:#fff8e6;
+  border-radius: 16px;
+  border: 2px dashed #f0c261;
+  padding: 14px 16px;
+  color:#5b3a21;
+  font-size: 14px;
+  line-height: 1.6;
+  box-shadow: 0 6px 16px rgba(0,0,0,.10);
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  resize: none;
+  overflow-y: auto;
+}
+
+
+/* ============================================================
+   13. FOOTER + REDES SOCIALES (TODAS LAS PÁGINAS)
+   ============================================================ */
+
+/* Pie de página oscuro con información de contacto */
+.site-footer.v2{
+  background:
+    radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px) 0 0/10px 10px,
+    linear-gradient(180deg, #4b2e17, #3a2313 70%);
+  color:#fff;
+  padding:44px 0 12px;
+  margin:0;
+  border-top:4px solid var(--color-acento);
+  box-shadow: inset 0 12px 24px rgba(0,0,0,.18);
+}
+
+/* Grid de columnas: Horario / Ubicación / Pedidos */
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.2fr 1.2fr 1fr;
+  gap:28px;
+}
+
+/* Columna individual del footer */
+.footer-col{
+  min-width:0;
+}
+
+/* Título de cada columna (“Horario”, “Ubicación”...) */
+.footer-title{
+  margin:0 0 10px;
+  font:900 20px/1 'Inter', sans-serif;
+  color:#ffd166;
+  text-shadow:0 2px 6px rgba(0,0,0,.35);
+}
+
+/* Párrafos dentro del footer */
+.footer-text{
+  margin:0;
+  opacity:.95;
+  line-height:1.55;
+}
+
+/* Botón de teléfono en el footer */
+.btn-telefono{
+  display:inline-block;
+  margin:10px 0 8px;
+  padding:10px 16px;
+  background:linear-gradient(90deg,#ffd166,#f5d067);
+  color:#3a2313;
+  border-radius:12px;
+  font-weight:900;
+  text-decoration:none;
+  box-shadow:0 4px 12px rgba(0,0,0,.25);
+  transition:.15s;
+}
+
+/* Hover del botón de teléfono en el footer */
+.btn-telefono:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.03);
+}
+
+/* Lista de servicios (• A domicilio, etc.) */
+.servicios{
+  list-style:none;
+  padding:0;
+  margin:6px 0 0;
+  opacity:.95;
+}
+
+/* Línea final de copyright */
+.copy{
+  text-align:center;
+  font-size:13px;
+  opacity:.85;
+  margin-top:24px;
+  padding-top:10px;
+  border-top:1px solid rgba(255,255,255,.12);
+}
+
+/* Ajuste: separa un poco la columna de “Horario” */
+.footer-col:first-child{
+  padding-left:40px;
+}
+
+/* Bloque donde se muestra el enlace a redes sociales */
+.footer-social{
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Enlace a la página de Facebook */
+.facebook-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: #1877F2;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* Icono SVG de Facebook (hereda el color del texto) */
+.fb-icon{
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Subrayado al pasar el mouse por el enlace de Facebook */
+.facebook-link:hover{
+  text-decoration: underline;
+}
+
+/* =========================================================
+   AJUSTE GENERAL DE HERO Y TÍTULOS (TODAS LAS SECCIONES)
+   ========================================================= */
+
+/* Alto del rectángulo de color en cada sección */
+.cafe-hero,
+.frias-hero,
+.desayunos-hero,
+.postres-hero{
+  padding:48px 0 56px !important;
+}
+
+/* Estilo unificado del H1 dentro del hero */
+.cafe-title,
+.desayunos-title,
+.postres-title{
+  margin:0;
+  text-align:center;
+  font-family:'Inter', sans-serif;
+  font-weight:900;
+  font-size:clamp(32px, 4.5vw, 52px);
+  line-height:1;
+  letter-spacing:.6px;
+  text-shadow:0 3px 10px rgba(0,0,0,.35);
+}
+
+
+/* Subtítulos debajo del H1 (frase descriptiva) */
+.cafe-sub,
+.desayunos-sub,
+.postres-sub{
+  margin:10px auto 0;
+  max-width:720px;
+  text-align:center;
+  font-size:16px;
+  opacity:.95;
+}
+
+
+
+/* ============================================================
+   14. ESTILOS RESPONSIVE GENERALES (móviles / tablets)
+   ============================================================ */
+
+/* Ajustes generales para pantallas medianas */
+@media (max-width: 900px){
+  /* Tarjetas del index: 2 por fila */
+  .grid-categorias{
+    grid-template-columns:repeat(2,1fr);
+  }
+  /* Footer pasa a 1 sola columna */
+  .footer-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  /* Secciones con dos columnas pasan a una */
+  .local-layout{
+    grid-template-columns:1fr;
+  }
+  .local-photos{
+    align-items:center;
+  }
+}
+
+/* Index: tarjetas en 1 columna en móviles pequeños */
+@media (max-width: 560px){
+  .grid-categorias{
+    grid-template-columns:1fr;
+  }
+}
+
+/* Bebidas calientes / frías: tarjeta vertical en móvil */
+@media (max-width: 760px){
+  .bebida-item{
+    grid-template-columns:1fr;
+  }
+  .bebida-item > img{
+    height:220px;
+  }
+  .bebida-texto p{
+    max-width:100%;
+  }
+}
+
+/* Postres: ajusta tamaño de título e imagen en móvil */
+@media (max-width: 768px){
+  .postres-title{
+    font-size:36px;
+  }
+  .postre-item img{
+    height:200px;
+  }
+}
+
+/* Desayunos: tarjetas pasan a vertical en móvil */
+@media (max-width: 880px){
+  .desayuno-item{
+    grid-template-columns:1fr;
+  }
+  .desayuno-item > img{
+    height:220px;
+  }
+}
+
+/* Esencia Bakano: tarjetas en una sola columna en móvil */
+@media(max-width:700px){
+  .esencia-grid{
+    grid-template-columns:1fr;
+  }
+}
