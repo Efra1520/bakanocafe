@@ -229,7 +229,7 @@ body{
 
 /* Banner principal con imagen de fondo (index) */
 .seccion-banner{
-  background-image:url("Proyecto/img/PORTADA.jpg");
+  background-image:url("img/PORTADA.jpg");
   background-size:cover;
   background-position:center;
   min-height:420px;
