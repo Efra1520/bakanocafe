@@ -1960,5 +1960,22 @@ body{
     padding: 0 18px;                 /* Evita que el texto se pegue a los lados */
   }
 }
+/* Ajuste del banner de portada en celulares */
+@media (max-width: 768px){
+  .seccion-banner{
+    min-height: 260px;         /* más bajito para que no se sienta tan enorme */
+    padding: 40px 16px;        /* menos padding lateral y vertical */
+    background-position: center top;  /* muestra más la parte superior de la imagen */
+  }
+
+  .seccion-banner .overlay h1{
+    font-size: 24px;
+  }
+
+  .seccion-banner .overlay p{
+    font-size: 14px;
+  }
+}
+
 
 
