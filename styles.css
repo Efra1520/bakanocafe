@@ -1949,15 +1949,9 @@ body{
    ============================================ */
 @media (max-width: 768px){
   .seccion-banner{
-    min-height: 260px;               /* Ajusta alto mínimo para móvil */
-    background-position: center top; /* Centrar mejor la imagen */
-    background-size: cover;          /* Evitar deformación */
+    background-size: contain;      /* muestra la imagen completa */
     background-repeat: no-repeat;
-  }
-
-  .seccion-banner .overlay h1,
-  .seccion-banner .overlay p{
-    padding: 0 18px;                 /* Evita que el texto se pegue a los lados */
+    background-position: center top;
   }
 }
 /* Ajuste del banner de portada en celulares */
