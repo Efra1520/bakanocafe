@@ -1903,3 +1903,62 @@ body{
     grid-template-columns:1fr;
   }
 }
+
+/* ============================================
+    AJUSTES DEL MENÚ PARA CELULARES
+   ============================================ */
+@media (max-width: 768px){
+
+  /* Contenedor del menú más ancho y centrado */
+  .menu-contenido{
+    flex-wrap: wrap;         /* Permite que los botones bajen */
+    padding: 10px 15px;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  /* Ajuste del logo */
+  .logo-del-sitio{
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+
+  /* Lista de navegación */
+  .lista-navegacion{
+    flex-wrap: wrap;        /* Permite dividir botones en 2 filas */
+    gap: 14px 20px;         /* Espacio entre botones */
+    justify-content: center;
+  }
+
+  /* Separación individual de botones */
+  .item-navegacion a{
+    font-size: 16px;
+    padding: 4px 6px;
+  }
+
+  /* Botón "Pedido a domicilio" */
+  .btn-nav{
+    font-size: 15px;
+    padding: 8px 14px;
+    margin-top: 4px;
+  }
+}
+/* ============================================
+    AJUSTE DEL BANNER EN CELULARES
+   ============================================ */
+@media (max-width: 768px){
+  .seccion-banner{
+    min-height: 260px;               /* Ajusta alto mínimo para móvil */
+    background-position: center top; /* Centrar mejor la imagen */
+    background-size: cover;          /* Evitar deformación */
+    background-repeat: no-repeat;
+  }
+
+  .seccion-banner .overlay h1,
+  .seccion-banner .overlay p{
+    padding: 0 18px;                 /* Evita que el texto se pegue a los lados */
+  }
+}
+
+
